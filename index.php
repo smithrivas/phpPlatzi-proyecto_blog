@@ -1,0 +1,55 @@
+<?php
+include_once 'config.php';
+$query = $pdo->prepare("SELECT * FROM blog_posts ORDER BY id DESC");
+$query->execute();
+
+$blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Blog Title</h1>
+            </div>
+        </div>        
+        <div class="row">
+            <div class="col-md-8">
+            
+                <?php foreach ($blogPosts as $blogPost) { ?>
+                <div class="blog-post">
+                    <h2><?=$blogPost['title'];?></h2>
+                    <p>Jan 1, 2020 by <a href="">Brayan</a></p>
+                    <div class="blog-post-image">
+                        <img src="images/keyboard.png" alt="">
+                    </div>
+                    <div class="blog-post-content">
+                    <?=$blogPost['content'];?>
+                    </div>
+                </div>
+                <?php } ?>
+
+            </div>    
+            <div class="col-md-4">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            </div>
+        </div>
+        <div class="row">
+            <footer>
+                
+            </footer>
+        </div>
+    </div>
+</body>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
