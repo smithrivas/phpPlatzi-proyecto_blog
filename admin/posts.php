@@ -26,7 +26,7 @@ $blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
         <div class="row">            
             <div class="col-md-8">
             <h2>Posts</h2>
-            <a class="btn btn-primary btn-sm" href="insert-post.php">New post</a><br/><br/>
+            <p><a class="btn btn-primary btn-sm" href="insert-post.php">New post</a></p>
                 <table class="table">
                 <tr>
                     <th>Title</th>
