@@ -6,9 +6,25 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit1123cc51a97bffbfea36579de6ef2de1
 {
+    public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'Phroute\\Phroute\\' => 16,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Phroute\\Phroute\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phroute/phroute/src/Phroute',
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit1123cc51a97bffbfea36579de6ef2de1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit1123cc51a97bffbfea36579de6ef2de1::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

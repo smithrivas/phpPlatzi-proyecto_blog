@@ -1,11 +1,3 @@
-<?php
-
-$query = $pdo->prepare("SELECT * FROM blog_posts ORDER BY id DESC");
-$query->execute();
-
-$blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,22 +15,24 @@ $blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
                 <h1>Blog Title</h1>
             </div>
         </div>        
-        <div class="row">
+        <div class="row">            
             <div class="col-md-8">
-            
+            <h2>Posts</h2>
+            <p><a class="btn btn-primary btn-sm" href="<?=BASE_URL;?>admin/posts/create">New post</a></p>
+                <table class="table">
+                <tr>
+                    <th>Title</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
                 <?php foreach ($blogPosts as $blogPost) { ?>
-                <div class="blog-post">
-                    <h2><?=$blogPost['title'];?></h2>
-                    <p>Jan 1, 2020 by <a href="">Brayan</a></p>
-                    <div class="blog-post-image">
-                        <img src="images/keyboard.jpg" alt="">
-                    </div>
-                    <div class="blog-post-content">
-                    <?=$blogPost['content'];?>
-                    </div>
-                </div>
+                <tr>
+                    <td><?=$blogPost['title'];?></td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
                 <?php } ?>
-
+                </table>            
             </div>    
             <div class="col-md-4">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
@@ -48,7 +42,7 @@ $blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
             <div class="col-md-12">
             <footer>
                 This is a footer<br/>
-                <a href="admin/index.php">Admin panel</a>
+                <a href="<?=BASE_URL;?>admin">Admin panel</a>
             </footer>
             </div>            
         </div>

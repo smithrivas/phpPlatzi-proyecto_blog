@@ -1,11 +1,3 @@
-<?php
-
-$query = $pdo->prepare("SELECT * FROM blog_posts ORDER BY id DESC");
-$query->execute();
-
-$blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,23 +16,11 @@ $blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>        
         <div class="row">            
-            <div class="col-md-8">
-            <h2>Posts</h2>
-            <p><a class="btn btn-primary btn-sm" href="insert-post.php">New post</a></p>
-                <table class="table">
-                <tr>
-                    <th>Title</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-                <?php foreach ($blogPosts as $blogPost) { ?>
-                <tr>
-                    <td><?=$blogPost['title'];?></td>
-                    <td>Edit</td>
-                    <td>Delete</td>
-                </tr>
-                <?php } ?>
-                </table>            
+            <div class="col-md-8">           
+            <h2>Admin panel</h2>
+                <ul>
+                    <li><a href="<?=BASE_URL;?>admin/posts">Manage posts</a></li>
+                </ul>
             </div>    
             <div class="col-md-4">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
@@ -50,7 +30,7 @@ $blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
             <div class="col-md-12">
             <footer>
                 This is a footer<br/>
-                <a href="admin/index.php">Admin panel</a>
+                <a href="<?=BASE_URL;?>admin">Admin panel</a>
             </footer>
             </div>            
         </div>
