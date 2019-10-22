@@ -1,5 +1,5 @@
 <?php
-include_once 'config.php';
+
 $query = $pdo->prepare("SELECT * FROM blog_posts ORDER BY id DESC");
 $query->execute();
 
@@ -31,7 +31,7 @@ $blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
                     <h2><?=$blogPost['title'];?></h2>
                     <p>Jan 1, 2020 by <a href="">Brayan</a></p>
                     <div class="blog-post-image">
-                        <img src="images/keyboard.png" alt="">
+                        <img src="images/keyboard.jpg" alt="">
                     </div>
                     <div class="blog-post-content">
                     <?=$blogPost['content'];?>
